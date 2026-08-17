@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0d1015;
+  --color-ink-raised: #12161d;
+  --color-panel: #171b22;
+  --color-panel-raised: #1f2530;
+  --color-hairline: #2b313d;
+  --color-paper: #ede6d6;
+  --color-paper-dim: #b9b2a0;
+  --color-muted: #8b8f9a;
+  --color-amber: #e3a542;
+  --color-amber-bright: #f4c465;
+  --color-verdigris: #5c8a82;
+  --color-redtag: #b33a3a;
+
+  --font-display: "Fraunces", "Iowan Old Style", serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", "IBM Plex Mono", monospace;
+
+  --shadow-spotlight: 0 0 120px 40px rgba(227, 165, 66, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* subtle film-grain / vignette so the ink background doesn't feel flat */
+.grain-bg {
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(227, 165, 66, 0.08), transparent 60%),
+    var(--color-ink);
+}
+
+.grain-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
