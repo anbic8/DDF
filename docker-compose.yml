@@ -4,6 +4,6 @@ services:
     container_name: ddf
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3333:3000"
     volumes:
       - ./data:/app/data

@@ -88,7 +88,7 @@ git pull
 docker compose up -d --build
 ```
 
-Läuft danach auf `http://<server>:3000`. Der Datenbestand (`serie.json`) sowie deine
+Läuft danach auf `http://<server>:3333`. Der Datenbestand (`serie.json`) sowie deine
 Shootout-Bewertungen (`ratings.json`) liegen in `./data` und bleiben bei `git pull` +
 Neubau des Containers erhalten (liegen außerhalb des Git-Repos, siehe `.gitignore`).
 
